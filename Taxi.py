@@ -28,6 +28,9 @@ def find_optimal_route(distances, tariffs):
     return optimal_route, min_cost
 
 n = int(input("Введите кол-во сотрудников >> "))
+if n < 1:
+    print("Число не может быть меньше одного!")
+    exit()
 distances = list(map(int,input("Введите расстояние в км до дома (через пробел) >> ").split()))
 tariffs = list(map(int,input("Введите цену на такси (через пробел) >> ").split()))
 optimal_route, min_cost = find_optimal_route(distances, tariffs)
@@ -42,3 +45,5 @@ def number_to_words(num):
         end = " рублей"
     result = words.capitalize() + end
     return result
+print("Оптимальный маршрут: ", optimal_route)
+print("Минимальная стоимость: ", number_to_words(min_cost))
