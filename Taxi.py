@@ -1,5 +1,5 @@
 import itertools
-
+from num2words import num2words
 
 def find_optimal_route(distances, tariffs):
     n = len(distances)  # количество сотрудников
@@ -31,3 +31,14 @@ n = int(input("Введите кол-во сотрудников >> "))
 distances = list(map(int,input("Введите расстояние в км до дома (через пробел) >> ").split()))
 tariffs = list(map(int,input("Введите цену на такси (через пробел) >> ").split()))
 optimal_route, min_cost = find_optimal_route(distances, tariffs)
+def number_to_words(num):
+    words = num2words(num, lang='ru')
+    ending = num % 10
+    if ending == 1 and num % 100 != 11:
+        end = " рубль"
+    elif 1 < ending < 5 and (num % 100 < 10 or num % 100 > 21):
+        end = " рубля"
+    else:
+        end = " рублей"
+    result = words.capitalize() + end
+    return result
